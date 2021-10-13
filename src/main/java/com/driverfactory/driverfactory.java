@@ -13,7 +13,8 @@ public class driverfactory {
 
 	public WebDriver driver;
 	
-	// ThreadLocal class is used for the synchonization and to prevent the deadlock
+	// ThreadLocal class is used for the synchronization and to prevent the deadlock
+	
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 	
 	public WebDriver init_driver(String browser) {
@@ -45,6 +46,10 @@ public class driverfactory {
 		getDriver().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		return getDriver();
 	}
+	
+	/*
+	 *  used to get the driver with ThreadLocal
+	 */
 	
 	public static synchronized WebDriver getDriver() {
 		

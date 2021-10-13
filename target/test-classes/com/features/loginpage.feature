@@ -6,7 +6,6 @@ Given User is on the log-in page
 
 Scenario: Get the title of the page
 
-When User gets the page title
 Then User gets the "STORE" as a title 
 
 
@@ -14,8 +13,9 @@ Scenario: Login Successful
 
 When User clicks on the login link
 And a dialogue box is displayed. 
-Then User enters the "admin123@yahoo.com" as an email ID
-And User enters the "admin123" password
+Then User enters the "admin123@yahoo.com" as an email ID 
+And enters the "admin123" as a password
+Then User clicks on the login Button
 Then User is on the home Page
 
 
