@@ -9,6 +9,8 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.driverfactory.driverfactory;
+
 public class LoginPage {
 
 	private WebDriver driver;
@@ -23,6 +25,31 @@ public class LoginPage {
 
 	@FindBy(id = "loginpassword")
 	private WebElement passwordInput;
+	
+	@FindBy(id = "nameofuser")
+	private WebElement welcomeMsg;
+	
+	@FindBy(xpath = "(//div[@class = 'caption']/p)[2]")
+	private WebElement address;
+	
+
+	@FindBy(xpath = "(//div[@class = 'caption']/p)[3]")
+	private WebElement phone;
+
+	@FindBy(xpath = "(//div[@class = 'caption']/p)[4]")
+	private WebElement email;
+	
+	@FindBy(xpath = "//div[@class = 'list-group']/a[2]")
+	private WebElement phones;
+	
+	@FindBy(xpath = "//div[@class = 'list-group']/a[3]")
+	private WebElement laptops;
+	
+	@FindBy(xpath = "//div[@class = 'list-group']/a[4]")
+	private WebElement monitors;
+	
+	
+	
 	
 	@FindBy(xpath = "//button[text()='Log in']")
 	private WebElement loginButton;
@@ -77,13 +104,59 @@ public class LoginPage {
 		this.loginButton.click();
 		return new HomePage();
 	}
+
+	public String VerifyAddress() {
+		
+		return this.address.getText();
+		
+	}
+	
+	public String Verifyphone() {
+		
+		return this.phone.getText();
+		
+	}
+	
+	public String Verifyemail() {
+		
+		return this.email.getText();
+		
+	}
 	
 	
-	public String VerifyAboutUsText() {
+	public String VerifyHomePage() throws InterruptedException {
+		
+		Thread.sleep(2000);
+		return this.welcomeMsg.getText();
+		
+	}
+	
+	public String VerifyAboutusText() {
 		
 		return this.aboutText.getText();
 		
 	}
+	
+	public String VerifyphonesText() {
+		
+		return this.phones.getText();
+		
+	}
+	
+	public String VerifylaptopsText() {
+	
+	return this.laptops.getText();
+	
+	}
+
+	public String VerifymonitorsText() {
+	
+	return this.monitors.getText();
+	
+	}
+
+	
+	
 	
 	
 }

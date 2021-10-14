@@ -59,28 +59,38 @@ public void User_clicks_on_the_login_Button() {
 
 
 @Then("User is on the home Page")
-public void user_is_on_the_home_page() {
+public void user_is_on_the_home_page() throws InterruptedException {
     // Write code here that turns the phrase above into concrete actions
    
+	Assert.assertTrue(loginpage.VerifyHomePage().contains("Welcome"));
+	
+	
 }
 
 @Then("after scrolling down, user can get the {string} as about us information")
-public void after_scrolling_down_user_can_get_the_as_about_us_information(String string) {
+public void after_scrolling_down_user_can_get_the_as_about_us_information(String aboutText) {
     // Write code here that turns the phrase above into concrete actions
-	Assert.assertEquals(false, true);
-	
+	Assert.assertEquals(aboutText, loginpage.VerifyAboutusText());
 	
 }
 
 @Then("user get the contact information such as {string} and {string} and {string} of the company.")
-public void user_get_the_contact_information_such_as_and_and_of_the_company(String string, String string2, String string3) {
+public void user_get_the_contact_information_such_as_and_and_of_the_company(String address, String phone, String email) {
     // Write code here that turns the phrase above into concrete actions
   
+	Assert.assertTrue(loginpage.VerifyAddress().contains(address));
+	Assert.assertTrue(loginpage.Verifyphone().contains(phone));
+	Assert.assertTrue(loginpage.Verifyemail().contains(email));
 }
 
 @Then("user has options like {string} and {string} and {string} to select")
-public void user_has_options_like_and_and_to_select(String string, String string2, String string3) {
+public void user_has_options_like_and_and_to_select(String phones, String laptops, String monitors) {
     // Write code here that turns the phrase above into concrete actions
-
-}
+	
+	Assert.assertTrue(loginpage.VerifylaptopsText().contains(laptops));
+	Assert.assertTrue(loginpage.VerifyphonesText().contains(phones));
+	Assert.assertTrue(loginpage.VerifymonitorsText().contains(monitors));
+	
+	
+	}
 }

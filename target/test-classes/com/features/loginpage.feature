@@ -22,7 +22,7 @@ Then User is on the home Page
 Scenario: About us and contact us present
 
 Then after scrolling down, user can get the "We believe performance needs to be validated at every stage of the software development cycle and our open source compatible, massively scalable platform makes that a reality." as about us information 
-And user get the contact information such as "Address" and "Phone" and "Email" of the company.
+And user get the contact information such as "2390 El Camino Real" and "+440 123456" and "demo@blazemeter.com" of the company.
 
 Scenario: Categories option present
 
