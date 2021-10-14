@@ -17,7 +17,7 @@ public class LoginPage {
 	
 	// private Locators
 	
-	@FindBy(id = "login2")
+	@FindBy(xpath = "//a[@id='login2']")
 	private WebElement linkForLogin;
 	
 	@FindBy(id = "loginusername")
@@ -82,6 +82,7 @@ public class LoginPage {
 	
 	public void VerifyLoginLinkPresent() throws InterruptedException {
 		
+		Thread.sleep(2000);
 		linkForLogin.click();
 		Thread.sleep(1000);
 		
@@ -102,7 +103,7 @@ public class LoginPage {
 	
 	public HomePage VerifyLoginFunctionality() {
 		this.loginButton.click();
-		return new HomePage();
+		return new HomePage(driver);
 	}
 
 	public String VerifyAddress() {
@@ -140,7 +141,6 @@ public class LoginPage {
 	public String VerifyphonesText() {
 		
 		return this.phones.getText();
-		
 	}
 	
 	public String VerifylaptopsText() {
@@ -155,7 +155,22 @@ public class LoginPage {
 	
 	}
 
-	
+	// This function created beacuse we need to login before any action is made on the homepage. 
+	public HomePage performLogin(String un, String pass) {
+		
+		try {
+			VerifyLoginLinkPresent();
+			VerifyUserNameTextBox(un);
+			VerifyPasswordTextBox(pass);
+			VerifyLoginFunctionality();
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Something is wrong with the login implementation: " + e.getMessage());
+		}
+		
+		return new HomePage(driver);
+	}
 	
 	
 	
