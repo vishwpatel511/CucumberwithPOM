@@ -35,20 +35,19 @@ public class applicationhooks {
 		driverfactory.init_driver(browserName);
 	}
 
-	@After(order = 1)
+	@After(order = 0)
 	public void quit() {
-		driver.quit();
+		driverfactory.getDriver().quit();
 	}
 	
-	@After(order = 0)
-	public void tearDown(Scenario sc) {
-		
-		if(sc.isFailed() == true) {
-			
-			String scname = sc.getName().replaceAll(" ", "-");
-			byte [] sourcePath = ((TakesScreenshot)driver).getScreenshotAs(org.openqa.selenium.OutputType.BYTES);
-			sc.attach(sourcePath, "image/png", scname);
+	@After(order = 1)
+	public void tearDown(Scenario scenario) {
+		if (scenario.isFailed()) {
+			// take screenshot:
+			String screenshotName = scenario.getName().replaceAll(" ", "_");
+			byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(org.openqa.selenium.OutputType.BYTES);
+			scenario.attach(sourcePath, "image/png", screenshotName);
+
 		}
-		
 	}
 }

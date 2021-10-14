@@ -67,7 +67,9 @@ public void user_is_on_the_home_page() {
 @Then("after scrolling down, user can get the {string} as about us information")
 public void after_scrolling_down_user_can_get_the_as_about_us_information(String string) {
     // Write code here that turns the phrase above into concrete actions
-   
+	Assert.assertEquals(false, true);
+	
+	
 }
 
 @Then("user get the contact information such as {string} and {string} and {string} of the company.")
